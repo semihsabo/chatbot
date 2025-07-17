@@ -1,0 +1,51 @@
+/* ────────── Tailwind ‒ zorunlu direktifler ────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ────────── Global (opsiyonel) ────────── */
+body {
+  @apply bg-[#f6f7fb];
+}
+
+/* ────────── Parlak mor shine butonu ────────── */
+.btn-shine-primary {
+  /* Temel görünüm – Tailwind util’leri */
+  @apply relative inline-flex items-center justify-center rounded-full
+          px-8 py-2 font-manrope font-medium text-white overflow-hidden;
+  /* Mor gradient zemin */
+  background: linear-gradient(135deg, #8557FF 0%, #7A4CFF 100%);
+}
+
+/* Parıltı şeridi */
+.btn-shine-primary::before {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -75%;
+  width: 75%;
+  height: 400%;
+  background: rgba(255, 255, 255, 0.45); /* parlaklık */
+  transform: rotate(25deg);
+  animation: shine-primary 2.2s linear infinite;
+}
+
+/* Şeridin kesintisiz kayması */
+@keyframes shine-primary {
+  0%   { transform: translateX(-120%) rotate(25deg); }
+  100% { transform: translateX(140%)  rotate(25deg); }
+}
+.btn-shine-dark{
+  @apply relative inline-flex items-center justify-center bg-black text-white text-sm 
+          font-manrope px-6 py-2 rounded-full overflow-hidden;
+}
+.btn-shine-dark::before{
+  content:"";position:absolute;top:-150%;left:-75%;width:75%;height:400%;
+  background:rgba(255,255,255,.35);
+  transform:rotate(25deg);
+  animation:shine-dark 2.2s linear infinite;
+}
+@keyframes shine-dark{
+  0%{transform:translateX(-120%) rotate(25deg);}
+  100%{transform:translateX(140%) rotate(25deg);}
+}
