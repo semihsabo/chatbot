@@ -22,22 +22,38 @@ export default function Footer() {
     },
     {
       title: "TALK TO US",
-      items: ["support@ercom.com", "+66 2399 1145", "Contact Us", "Facebook", "LinkedIn", "Twitter"],
+      items: [
+        "support@ercom.com",
+        "+66 2399 1145",
+        "Contact Us",
+        "Facebook",
+        "LinkedIn",
+        "Twitter",
+      ],
     },
   ];
 
   const socials = [
-    { name: "facebook",   path: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" },
-    { name: "linkedin",   path: "M4 4h4v16H4zm14 0h4v16h-4zM6 10h2v2H6zm12 6h2v2h-2zm-6-6h4v8h-4z" },
-    { name: "twitter",    path: "M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 2a4.48 4.48 0 00-4 6v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" },
+    {
+      name: "facebook",
+      path: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z",
+    },
+    {
+      name: "linkedin",
+      path: "M4 4h4v16H4zm14 0h4v16h-4zM6 10h2v2H6zm12 6h2v2h-2zm-6-6h4v8h-4z",
+    },
+    {
+      name: "twitter",
+      path: "M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 2a4.48 4.48 0 00-4 6v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z",
+    },
   ];
 
   return (
-    <footer className="bg-black text-gray-400 pt-20 pb-14 px-8 font-manrope">
+    <footer className="bg-black text-gray-400 pt-14 sm:pt-20 pb-10 sm:pb-14 px-6 sm:px-8 font-manrope">
       <div className="max-w-6xl mx-auto">
-        {/* üst kısım */}
+        {/* Top section */}
         <div className="flex flex-col md:flex-row gap-12 md:gap-20">
-          {/* logo */}
+          {/* Logo */}
           <div className="flex-shrink-0">
             <div className="flex items-center gap-3 mb-8 md:mb-0">
               <span className="w-9 h-9 rounded-full bg-white inline-block" />
@@ -45,16 +61,18 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* dört kolon */}
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-10">
+          {/* Four columns */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {cols.map((col) => (
               <div key={col.title}>
-                <h3 className="text-white mb-4 text-[16px] font-medium">{col.title}</h3>
-                <ul className="space-y-2 text-[16px]">
+                <h3 className="text-white mb-4 text-base sm:text-[16px] font-medium whitespace-nowrap">
+                  {col.title}
+                </h3>
+                <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-[16px]">
                   {col.items.map((it) => (
                     <li
                       key={it}
-                      className="hover:text-white transition cursor-pointer leading-relaxed"
+                      className="hover:text-white transition cursor-pointer leading-relaxed whitespace-nowrap"
                     >
                       {it}
                     </li>
@@ -65,14 +83,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* alt çizgi */}
-        <div className="border-t border-gray-700 mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* copyright */}
-          <span className="text-sm text-gray-500">
+        {/* Divider */}
+        <div className="border-t border-gray-700 mt-10 md:mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Copyright */}
+          <span className="text-xs sm:text-sm text-gray-500 text-center md:text-left">
             © {new Date().getFullYear()} Lift Media. All rights reserved.
           </span>
 
-          {/* sosyal ikonlar */}
+          {/* Social icons */}
           <div className="flex gap-4">
             {socials.map((s) => (
               <a

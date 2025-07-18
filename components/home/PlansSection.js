@@ -7,11 +7,13 @@ export default function PlansSection() {
   ];
 
   return (
-    <section className="relative bg-primary pt-24 pb-20 px-6 text-white overflow-hidden rounded-t-3xl">
+    <section
+      className="relative bg-primary pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 px-4 sm:px-6 text-white overflow-hidden rounded-t-3xl"
+    >
       {/* Sol‑üst dekor çizgiler */}
       <svg
         viewBox="0 0 60 60"
-        className="absolute top-8 left-8 w-12 h-12 text-white"
+        className="absolute top-6 sm:top-8 left-6 sm:left-8 w-10 sm:w-12 h-10 sm:h-12 text-white"
         fill="none"
         stroke="currentColor"
         strokeWidth="4"
@@ -23,7 +25,7 @@ export default function PlansSection() {
       </svg>
 
       {/* Başlık */}
-      <h2 className="max-w-xl font-manrope font-extrabold text-3xl md:text-5xl leading-tight">
+      <h2 className="max-w-xl font-manrope font-extrabold text-2xl sm:text-3xl md:text-5xl leading-tight">
         Her koşula uygun
         <br />
         tasarlanmış planları
@@ -36,7 +38,7 @@ export default function PlansSection() {
       {/* Noktalı eğik ok */}
       <svg
         viewBox="0 0 250 140"
-        className="absolute -z-10 md:z-0 w-64 md:w-80 top-32 md:top-24 left-1/2 md:left-96"
+        className="absolute -z-10 md:z-0 w-52 sm:w-64 md:w-80 top-32 md:top-24 left-1/2 md:left-96"
         fill="none"
         stroke="#FFFFFF"
         strokeWidth="3"
@@ -44,32 +46,28 @@ export default function PlansSection() {
         strokeLinecap="round"
       >
         <path d="M5 5c120 50 120 80 0 130" />
-        <polyline
-          points="230 115 245 135 215 135"
-          fill="none"
-          strokeDasharray="0"
-        />
+        <polyline points="230 115 245 135 215 135" fill="none" strokeDasharray="0" />
       </svg>
 
       {/* CTA butonları */}
-      <div className="mt-16 flex gap-4 flex-col sm:flex-row sm:justify-center">
-        <button className="px-10 py-2 rounded-full border border-white text-white font-manrope hover:bg-white hover:text-primary transition">
+      <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-center">
+        <button className="px-8 sm:px-10 py-2 rounded-full border border-white text-white font-manrope hover:bg-white hover:text-primary transition">
           Demo Talep Et
         </button>
-        <button className="px-10 py-2 rounded-full bg-black text-white font-manrope hover:opacity-90 transition">
+        <button className="px-8 sm:px-10 py-2 rounded-full bg-black text-white font-manrope hover:opacity-90 transition">
           Planları İncele
         </button>
       </div>
 
       {/* İkon satırı */}
-      <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-10">
+      <div className="mt-12 sm:mt-16 grid grid-cols-1 xs:grid-cols-3 gap-8 sm:gap-10 max-w-4xl mx-auto justify-items-center">
         {plans.map((p) => (
-          <div key={p.icon} className="flex flex-col items-center gap-4">
-            <div className="w-32 h-32 rounded-full flex items-center justify-center bg-white/90">
+          <div key={p.icon} className="flex flex-col items-center gap-3 sm:gap-4">
+            <div className="w-24 sm:w-28 h-24 sm:h-28 rounded-full flex items-center justify-center bg-white/90">
               {p.icon === "gift" && (
                 <svg
                   viewBox="0 0 24 24"
-                  className="w-14 h-14 text-primary stroke-current"
+                  className="w-12 sm:w-14 h-12 sm:h-14 text-primary stroke-current"
                   fill="none"
                   strokeWidth="2"
                 >
@@ -83,7 +81,7 @@ export default function PlansSection() {
               {p.icon === "crown" && (
                 <svg
                   viewBox="0 0 24 24"
-                  className="w-14 h-14 text-primary stroke-current"
+                  className="w-12 sm:w-14 h-12 sm:h-14 text-primary stroke-current"
                   fill="none"
                   strokeWidth="2"
                 >
@@ -94,7 +92,7 @@ export default function PlansSection() {
               {p.icon === "building" && (
                 <svg
                   viewBox="0 0 24 24"
-                  className="w-14 h-14 text-primary stroke-current"
+                  className="w-12 sm:w-14 h-12 sm:h-14 text-primary stroke-current"
                   fill="none"
                   strokeWidth="2"
                 >
@@ -104,7 +102,9 @@ export default function PlansSection() {
                 </svg>
               )}
             </div>
-            <span className="font-manrope">{p.label}</span>
+            <span className="font-manrope text-sm sm:text-base capitalize tracking-tight">
+              {p.label}
+            </span>
           </div>
         ))}
       </div>

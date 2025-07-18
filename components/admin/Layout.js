@@ -4,14 +4,16 @@ import Topbar from "./Topbar";
 
 export default function Layout({ children }) {
   return (
-    <div className="flex h-screen bg-[#F9FAFB]">
-      {/* Sidebar */}
-      <Sidebar />
+    <div className="flex flex-col md:flex-row min-h-screen bg-[#F9FAFB]">
+      {/* Sidebar – mobilde gizli, ≥md ekranda görünür */}
+      <div className="hidden md:block">
+        <Sidebar />
+      </div>
 
-      {/* Main content */}
-      <div className="flex-1 flex flex-col">
+      {/* Ana alan */}
+      <div className="flex-1 flex flex-col overflow-hidden">
         <Topbar />
-        <main className="flex-1 p-6 overflow-auto">{children}</main>
+        <main className="flex-1 p-4 sm:p-6 overflow-y-auto">{children}</main>
       </div>
     </div>
   );

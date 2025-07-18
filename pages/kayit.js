@@ -49,34 +49,36 @@ export default function Kayit() {
   }, [showSuccess]);
 
   return (
-    <main className="min-h-screen bg-[#f3eefe] flex items-center justify-center px-4">
+    <main className="min-h-screen bg-[#f3eefe] flex items-center justify-center px-4 py-12">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Sol */}
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2 text-[#8557FF] font-bold text-xl">
+        <div className="flex flex-col gap-4 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-2 text-[#8557FF] font-bold text-xl">
             <span className="w-6 h-6 rounded-full bg-white" />
             ChatBot
           </div>
-          <h1 className="text-5xl font-bold text-black leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold text-black leading-tight">
             Hesap <span className="text-[#55D6BE]">Oluştur</span>
           </h1>
           <p className="text-gray-600 text-sm">
             Şimdi gerekli adımları tamamlayarak hesabınızı oluşturun, ChatBot deneyimi ile büyümeye odaklanın.
           </p>
 
-          <Image
-            src="/images/kayit-hero.svg"
-            alt="Kayıt Ol"
-            width={480}
-            height={400}
-            className="object-contain mt-8"
-          />
+          <div className="flex justify-center md:justify-start">
+            <Image
+              src="/images/kayit-hero.svg"
+              alt="Kayıt Ol"
+              width={400}
+              height={320}
+              className="object-contain mt-8"
+            />
+          </div>
         </div>
 
         {/* Sağ - Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-8 md:p-10 rounded-xl shadow-xl w-full relative min-h-[580px] flex flex-col justify-between"
+          className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-xl w-full relative flex flex-col justify-between"
         >
           {showSuccess && (
             <div className="absolute top-4 right-4 bg-green-100 text-green-800 px-4 py-2 rounded-lg text-sm shadow">
@@ -124,7 +126,7 @@ export default function Kayit() {
             <button
               type="submit"
               disabled={!isFormValid}
-              className={`w-full py-3 mt-6 rounded text-white font-semibold transition 
+              className={`w-full py-3 mt-6 rounded text-white font-semibold transition text-sm
                 ${isFormValid ? "bg-[#8557FF] hover:bg-[#774dff] shadow-md" : "bg-[#6B7280] cursor-not-allowed"}`}
             >
               Hesap Oluştur
@@ -149,8 +151,8 @@ function Input({ name, value, onChange, placeholder, type = "text" }) {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`w-full px-4 py-2 mb-3 rounded border placeholder-gray-500 transition 
-        ${value.trim() ? "border-[#8557FF]" : "border-gray-300"} focus:outline-none`}
+      className={`w-full px-4 py-2 mb-3 rounded border placeholder-gray-500 transition text-sm
+        ${value.trim() ? "border-[#8557FF]" : "border-gray-300"} focus:outline-none focus:ring-2 focus:ring-[#8557FF]`}
     />
   );
 }
