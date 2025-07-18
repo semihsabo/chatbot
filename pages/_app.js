@@ -1,13 +1,19 @@
 import '../styles/globals.css';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';   // <‑‑ yeni satır
+import Footer from '../components/Footer';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  // admin sayfalarında navbar ve footer gösterme
+  const isAdminRoute = router.pathname.startsWith('/admin');
+
   return (
     <>
-      <Navbar />
+      {!isAdminRoute && <Navbar />}
       <Component {...pageProps} />
-      <Footer />          {/* <‑‑ footer’ı ekledik */}
+      {!isAdminRoute && <Footer />}
     </>
   );
 }
