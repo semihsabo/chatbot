@@ -1,4 +1,3 @@
-// components/Footer.js
 export default function Footer() {
   const cols = [
     {
@@ -49,30 +48,30 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-gray-400 pt-14 sm:pt-20 pb-10 sm:pb-14 px-6 sm:px-8 font-manrope">
+    <footer className="bg-black text-gray-400 pt-14 sm:pt-20 pb-10 sm:pb-14 px-6 sm:px-8 font-manrope dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
-        {/* Top section */}
-        <div className="flex flex-col md:flex-row gap-12 md:gap-20">
+        {/* Üst bölüm */}
+        <div className="flex flex-col md:flex-row md:flex-wrap gap-12 md:gap-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="flex items-center gap-3 mb-8 md:mb-0">
+            <div className="flex items-center gap-3 mb-4 md:mb-0">
               <span className="w-9 h-9 rounded-full bg-white inline-block" />
               <span className="text-white text-2xl font-extrabold">ChatBot</span>
             </div>
           </div>
 
-          {/* Four columns */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+          {/* Kolonlar */}
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
             {cols.map((col) => (
               <div key={col.title}>
-                <h3 className="text-white mb-4 text-base sm:text-[16px] font-medium whitespace-nowrap">
+                <h3 className="text-white mb-4 text-base font-semibold whitespace-nowrap">
                   {col.title}
                 </h3>
-                <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-[16px]">
+                <ul className="space-y-2 text-sm">
                   {col.items.map((it) => (
                     <li
-                      key={it}
-                      className="hover:text-white transition cursor-pointer leading-relaxed whitespace-nowrap"
+                      key={col.title + "-" + it}
+                      className="hover:text-white transition-colors cursor-pointer leading-relaxed whitespace-nowrap"
                     >
                       {it}
                     </li>
@@ -83,21 +82,19 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
+        {/* Alt bölüm */}
         <div className="border-t border-gray-700 mt-10 md:mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Copyright */}
           <span className="text-xs sm:text-sm text-gray-500 text-center md:text-left">
             © {new Date().getFullYear()} Lift Media. All rights reserved.
           </span>
 
-          {/* Social icons */}
           <div className="flex gap-4">
             {socials.map((s) => (
               <a
                 key={s.name}
                 href="#"
-                className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-600 transition"
                 aria-label={s.name}
+                className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-700 hover:border-white transition-colors"
               >
                 <svg
                   viewBox="0 0 24 24"

@@ -1,97 +1,106 @@
-import Head from "next/head";
-import Link from "next/link";
+/* pages/sifre.js  (Şifremi Unuttum – Adım 1) */
 
-export function LeftPanel() {
+import { useState } from 'react';
+import Image from 'next/image';
+
+export default function ForgotStep1() {
+  /* basit state sadece input boş – dolu kontrolü */
+  const [email, setEmail] = useState('');
+  const isValid = email.trim() !== '';
+
   return (
-    <div className="relative flex flex-col justify-center px-10 py-14 bg-gradient-to-b from-[#f2ecff] to-[#e8dcff]">
-      <Logo />
-      <div className="max-w-sm">
-        <img
-          src="/images/forgot-hero.svg"
-          alt=""
-          className="mb-8 select-none pointer-events-none"
-          draggable="false"
-        />
-        <h1 className="text-4xl md:text-5xl font-extrabold font-manrope leading-tight">
-          Şifremi <br />
-          <span className="bg-gradient-to-r from-tertiary to-secondary bg-clip-text text-transparent">
-            Unuttum
-          </span>
-        </h1>
-        <span className="block w-36 h-[3px] bg-primary mt-4 mb-6" />
-        <p className="text-gray-600">
-          Endişe etmeyin, size adım adım hesabınızı kurtarmak için yardımcı olacağız.
-        </p>
-      </div>
-    </div>
-  );
-}
-
-export function PageFooterLinks() {
-  return (
-    <div className="flex justify-center gap-6 text-xs text-gray-500 mt-8">
-      <a href="#">Yardım</a>
-      <a href="#">Gizlilik</a>
-      <a href="#">Şartlar</a>
-    </div>
-  );
-}
-
-function Logo() {
-  return (
-    <div className="flex items-center gap-2 mb-10">
-      <span className="w-8 h-8 rounded-full bg-primary" />
-      <span className="font-extrabold text-xl text-primary">ChatBot</span>
-    </div>
-  );
-}
-
-export default function ForgotPassword() {
-  return (
-    <>
-      <Head><title>Şifremi Unuttum • Adım 1</title></Head>
-
-      <div className="min-h-screen grid md:grid-cols-2">
-        {/* SOL BLOK ------------------------------------------------ */}
-        <LeftPanel />
-
-        {/* FORM KARTI -------------------------------------------- */}
-        <div className="flex items-center justify-center px-6 py-16 bg-white">
-          <div className="w-full max-w-sm bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] p-8">
-            <h2 className="text-xl font-bold mb-6">Şifremi Unuttum</h2>
-
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm mb-1">E‑posta</label>
-                <input
-                  type="email"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="E-posta adresinizi girin"
-                />
-              </div>
-
-              <p className="text-xs text-gray-500 leading-5">
-                Şimdi girdiğiniz mail adresine şifre sıfırlama kodu içeren bir mail göndereceğiz.
-                Kodu kimseyle paylaşmayın
-              </p>
-
-              <button type="submit" className="btn-shine-dark w-full">
-                Şifre Sıfırlama Kodu Gönder
-              </button>
-
-              {/* Devam → kod ekranı */}
-              <Link
-                href="/sifre/dogrula"
-                className="block text-center rounded-full bg-tertiary/90 text-white mt-3 py-2 hover:opacity-90"
-              >
-                Devam Et
-              </Link>
-            </form>
-
-            <PageFooterLinks />
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white via-[#F3EDFF] to-[#ECE4FF] px-4 py-10">
+      {/* 480 px sabit panel + auto form */}
+      <div className="w-full max-w-7xl grid lg:grid-cols-[480px_1fr] gap-12 items-center">
+        {/* SOL PANEL */}
+        <aside className="relative px-10 py-12 flex flex-col bg-white/50 backdrop-blur-md rounded-2xl shadow-md">
+          {/* logo */}
+          <div className="flex items-center gap-2 text-[#6D5DF5] font-semibold text-xl mb-10">
+            <Image src="/images/undraw_forgot-password_odai 1.svg" alt="" width={20} height={20} />
+            ChatBot
           </div>
-        </div>
+
+          {/* başlık */}
+          <h1 className="text-5xl font-black leading-tight">
+            Şifremi <span className="text-[#10CAB7]">Unuttum</span>
+          </h1>
+
+          <p className="mt-6 text-gray-700 max-w-sm">
+            Endişe etmeyin, size adım adım hesabınızı kurtarmak için yardımcı olacağız.
+          </p>
+
+          {/* hero illustration */}
+          <Image
+            src="/images/undraw_forgot-password_odai 1.svg"
+            alt=""
+            width={260}
+            height={260}
+            className="mt-12 self-center select-none pointer-events-none"
+          />
+        </aside>
+
+        {/* SAĞ FORM */}
+        <section className="flex justify-center">
+          <form className="w-full max-w-[420px] bg-white rounded-2xl shadow-xl p-8">
+            <h2 className="text-xl font-bold mb-8 text-center">Şifremi Unuttum</h2>
+
+            {/* yeşil kalkan ikonu */}
+            <Image
+              src="/images/mdi_security-lock-outline (1).svg"
+              alt=""
+              width={140}
+              height={140}
+              className="mx-auto mb-8 select-none pointer-events-none"
+            />
+
+            <label className="block text-sm font-medium mb-1">E‑posta</label>
+            <input
+              type="email"
+              placeholder="E‑posta adresinizi girin"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border border-gray-300 rounded px-4 py-2 mb-4 focus:ring-2 focus:ring-[#6D5DF5] outline-none placeholder-gray-500"
+            />
+
+            <p className="text-xs text-gray-600 mb-6">
+              Şimdi girdiğiniz mail adresine şifre sıfırlama kodu içeren bir mail göndereceğiz. Kodu kimseyle
+              paylaşmayın.
+            </p>
+
+            <button
+              type="button"
+              disabled={!isValid}
+              className={`w-full py-3 rounded text-white font-semibold mb-4 transition ${
+                isValid ? 'bg-black hover:bg-gray-800' : 'bg-gray-400 cursor-not-allowed'
+              }`}
+            >
+              Şifre Sıfırlama Kodu Gönder
+            </button>
+
+            <button
+              type="submit"
+              disabled={!isValid}
+              className={`w-full py-3 rounded font-semibold text-white transition ${
+                isValid ? 'bg-[#45D7A5] hover:bg-[#2CCF95]' : 'bg-gray-300 cursor-not-allowed'
+              }`}
+            >
+              Devam Et
+            </button>
+
+            <div className="mt-8 flex justify-center gap-8 text-xs text-gray-500">
+              <a href="#" className="hover:underline">
+                Yardım
+              </a>
+              <a href="#" className="hover:underline">
+                Gizlilik
+              </a>
+              <a href="#" className="hover:underline">
+                Şartlar
+              </a>
+            </div>
+          </form>
+        </section>
       </div>
-    </>
+    </main>
   );
 }

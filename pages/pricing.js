@@ -1,4 +1,3 @@
-// pages/pricing.js
 import PricingCard from "../components/pricing/PricingCard";
 
 const GiftIcon = (
@@ -30,9 +29,9 @@ export default function PricingPage() {
   return (
     <section className="bg-white pt-24 pb-32 px-5">
       <div className="max-w-7xl mx-auto">
-        {/* Başlık + İllüstrasyon */}
+        {/* Başlık ve Görsel */}
         <div className="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-20 lg:mb-24">
-          <div>
+          <div className="text-center md:text-left">
             <h1 className="text-[32px] sm:text-[40px] md:text-[56px] font-extrabold font-manrope leading-tight">
               Kendine en uygun
               <br />
@@ -47,14 +46,14 @@ export default function PricingPage() {
 
           <img
             src="/images/pricing-hero.svg"
-            alt="plan illustration"
-            className="w-52 sm:w-60 md:w-72 lg:w-80 mx-auto"
+            alt="Plan Illustration"
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto h-auto"
             draggable="false"
           />
         </div>
 
-        {/* Plan Kartları */}
-        <div className="flex flex-col lg:flex-row gap-8 md:gap-10 justify-center">
+        {/* Kartlar */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           <PricingCard
             icon={GiftIcon}
             plan="Ücretsiz Plan"

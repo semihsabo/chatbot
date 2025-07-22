@@ -24,7 +24,7 @@ export default function DashboardContent() {
       {/* ÜST METRİKLER + TARİH SEÇİCİ */}
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-6">
         {/* Metrik Kartları */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           {metrics.map((item) => (
             <div
               key={item.title}
@@ -39,16 +39,18 @@ export default function DashboardContent() {
         </div>
 
         {/* Tarih Filtresi */}
-        <select
-          className="w-full lg:w-auto border rounded-lg px-4 py-2 text-sm sm:text-base shadow-sm"
-          value={dateRange}
-          onChange={(e) => setDateRange(e.target.value)}
-        >
-          <option>Bugün</option>
-          <option>Son 7 Gün</option>
-          <option>Son 30 Gün</option>
-          <option>Bu Ay</option>
-        </select>
+        <div className="w-full lg:w-auto">
+          <select
+            className="w-full border rounded-lg px-4 py-2 text-sm sm:text-base shadow-sm"
+            value={dateRange}
+            onChange={(e) => setDateRange(e.target.value)}
+          >
+            <option>Bugün</option>
+            <option>Son 7 Gün</option>
+            <option>Son 30 Gün</option>
+            <option>Bu Ay</option>
+          </select>
+        </div>
       </div>
 
       {/* GRAFİKLER + KAMPANYALAR */}

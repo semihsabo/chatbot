@@ -1,18 +1,13 @@
 // components/admin/Topbar.js
 import { useState } from "react";
-import { FaSearch, FaBell, FaChevronDown, FaBars } from "react-icons/fa";
+import { FaSearch, FaBell, FaChevronDown, FaBars, FaCogs } from "react-icons/fa";
 import Image from "next/image";
 
-/**
- * İPUCU → Eğer mobile sidebar aç/kapa gerekiyorsa,
- * parent <Layout> bileşenine "onToggleSidebar" prop'u geçirip burada çağır.
- */
 export default function Topbar({ onToggleSidebar }) {
   const [showSearch, setShowSearch] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
-  // Yardımcı: hepsini kapat
   const closeAll = () => {
     setShowSearch(false);
     setShowNotifications(false);
@@ -20,27 +15,25 @@ export default function Topbar({ onToggleSidebar }) {
   };
 
   return (
-    <header className="flex items-center justify-between gap-2 p-3 sm:p-4 lg:px-6 bg-white shadow-md relative z-10">
+    <header className="flex items-center justify-between gap-1 p-3 sm:p-3 lg:px-6 bg-white shadow-md relative z-10">
       {/* Mobile hamburger */}
       <button
-        className="md:hidden text-gray-600 hover:text-purple-600 transition p-2 -ml-2"
+        className="md:hidden text-gray-600 hover:text-purple-600 transition p-2 -ml-1"
         onClick={onToggleSidebar}
         aria-label="Menüyü Aç/Kapat"
       >
         <FaBars className="text-lg" />
       </button>
 
-      {/* Sağ taraftaki aksiyonlar */}
-      <div className="flex items-center gap-3 sm:gap-4 ml-auto">
+      {/* Sağdaki aksiyonlar */}
+      <div className="flex items-center gap-2 sm:gap-3 ml-auto">
         {/* Arama */}
         <div className="relative">
           <button
             onClick={() => {
-              setShowSearch(!showSearch);
-              setShowNotifications(false);
-              setShowProfileMenu(false);
+              closeAll(); setShowSearch(prev => !prev);
             }}
-            className="text-gray-600 hover:text-purple-600 transition border border-gray-300 p-1.5 rounded-md"
+            className="text-gray-600 hover:text-purple-600 border border-gray-300 p-1.5 rounded-md"
             aria-label="Ara"
           >
             <FaSearch className="text-lg" />
@@ -60,11 +53,9 @@ export default function Topbar({ onToggleSidebar }) {
         <div className="relative">
           <button
             onClick={() => {
-              setShowNotifications(!showNotifications);
-              setShowSearch(false);
-              setShowProfileMenu(false);
+              closeAll(); setShowNotifications(prev => !prev);
             }}
-            className="text-gray-600 hover:text-purple-600 transition p-1.5"
+            className="text-gray-600 hover:text-purple-600 p-1.5"
             aria-label="Bildirimler"
           >
             <FaBell className="text-lg" />
@@ -80,11 +71,9 @@ export default function Topbar({ onToggleSidebar }) {
         <div className="relative">
           <button
             onClick={() => {
-              setShowProfileMenu(!showProfileMenu);
-              setShowSearch(false);
-              setShowNotifications(false);
+              closeAll(); setShowProfileMenu(prev => !prev);
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-1 sm:gap-2"
             aria-label="Profil Menüsü"
           >
             <Image
@@ -94,9 +83,9 @@ export default function Topbar({ onToggleSidebar }) {
               height={32}
               className="rounded-full"
             />
-            <div className="text-right text-xs sm:text-sm hidden md:block">
-              <p className="text-gray-500 leading-none">@semih</p>
-              <p className="font-bold text-black leading-none">semihsabo</p>
+            <div className="hidden md:flex flex-col text-right text-sm px-1">
+              <span className="text-gray-500 leading-none">@semih</span>
+              <span className="font-bold text-black leading-none">semihsabo</span>
             </div>
             <FaChevronDown className="text-gray-600" />
           </button>
@@ -108,13 +97,13 @@ export default function Topbar({ onToggleSidebar }) {
                 <p className="font-bold text-black leading-none">semih</p>
               </div>
               <a href="#" className="flex items-center gap-2 px-4 py-3 hover:bg-gray-50">
-                <span className="text-lg">⚙️</span> Ayarlar
+                <FaCogs className="text-sm" /> Ayarlar
               </a>
               <a href="#" className="flex items-center gap-2 px-4 py-3 hover:bg-gray-50">
-                <span className="text-lg">👤</span> Profil
+                👤 Profil
               </a>
               <a href="#" className="flex items-center gap-2 px-4 py-3 text-red-500 hover:bg-gray-50">
-                <span className="text-lg">🚪</span> Oturumu kapat
+                🚪 Oturumu kapat
               </a>
             </div>
           )}

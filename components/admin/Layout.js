@@ -1,19 +1,32 @@
 // components/admin/Layout.js
-import Sidebar from "./Sidebar";
-import Topbar from "./Topbar";
+import { useState, useEffect } from 'react';
+import Sidebar from './Sidebar';
+import Topbar from './Topbar';
 
 export default function Layout({ children }) {
-  return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-[#F9FAFB]">
-      {/* Sidebar – mobilde gizli, ≥md ekranda görünür */}
-      <div className="hidden md:block">
-        <Sidebar />
-      </div>
+  const [collapsed, setCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-      {/* Ana alan */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Topbar />
-        <main className="flex-1 p-4 sm:p-6 overflow-y-auto">{children}</main>
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const mlClass = isMobile ? 'ml-0' : collapsed ? 'ml-20' : 'ml-64';
+
+  return (
+    <div className="flex">
+      {/* Sidebar (mobilde absolute olabilir) */}
+      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} isMobile={isMobile} />
+
+      {/* İçerik */}
+      <div className={`${mlClass} transition-all duration-300 flex flex-col min-h-screen w-full`}>
+        <Topbar onToggleSidebar={() => setCollapsed(!collapsed)} />
+        <main className="pt-4 p-4 flex-1">
+          {children}
+        </main>
       </div>
     </div>
   );

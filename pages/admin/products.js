@@ -21,7 +21,7 @@ const initialProducts = [
     price: 259.9,
     stock: 45,
     status: "InStock",
-    image: "/images/placeholder_product.svg",
+    image: "/images/abc.png",
   },
   {
     id: "SM-002",
@@ -31,7 +31,7 @@ const initialProducts = [
     price: 139.9,
     stock: 8,
     status: "LowStock",
-    image: "/images/placeholder_product.svg",
+    image: "/images/abcd.png",
   },
   {
     id: "BX-003",
@@ -41,7 +41,7 @@ const initialProducts = [
     price: 79.9,
     stock: 0,
     status: "OutOfStock",
-    image: "/images/placeholder_product.svg",
+    image: "/images/abcde.png",
   },
 ];
 
